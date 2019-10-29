@@ -1,8 +1,8 @@
-language: Java
+language: java
 notifications:
-  email:
+email:
     if: branch = master
     on_success: never
     on_failure: always
-    - piotr.j.tomaszewski@student.put.poznan.pl
-  
+    recipients:
+    - pjtomaszewski98@gmail.com
