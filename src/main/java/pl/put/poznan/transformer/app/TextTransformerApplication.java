@@ -1,7 +1,7 @@
 package pl.put.poznan.transformer.app;
 
 import org.springframework.boot.SpringApplication;
-iamport org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication(scanBasePackages = {"pl.put.poznan.transformer.rest"})
