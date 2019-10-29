@@ -1,7 +1,6 @@
 language: java
 notifications:
 email:
-    if: branch = master
     on_success: never
     on_failure: always
     recipients:
