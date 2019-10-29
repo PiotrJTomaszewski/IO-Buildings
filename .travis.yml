@@ -1,1 +1,8 @@
 language: Java
+notifications:
+  email:
+    if: branch = master
+    on_success: never
+    on_failure: always
+    - piotr.j.tomaszewski@student.put.poznan.pl
+  
