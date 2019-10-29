@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.put.poznan</groupId>
-    <artifactId>io-project-architecture</artifactId>
+    <artifactId>io-buildings</artifactId>
     <version>0.1</version>
 
     <parent>
