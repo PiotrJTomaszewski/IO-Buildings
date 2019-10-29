@@ -1,4 +1,6 @@
 # IO-Builings
+![Build status](<https://travis-ci.org/PiotrJTomaszewski/IO-Builings.svg?branch=master>)
+
 Projekt na laboratorium Inżynierii Oprogramowania
 # INFO
 Wszystkie zadania, które sobie zdefiniujemy dodajemy jako issues (te podstawowe, które definiowaliśmy na labach postaram się dodać ja). Ale jakby pojawiły się inne, to ustawiamy w issue pole 'projects' na 'Pierwszy sprint' i 'milestone' również na 'Pierwszy sprint'. Jak chcecie się zabrać za któryś issue, to dodajcie siebie w polu assignee.
