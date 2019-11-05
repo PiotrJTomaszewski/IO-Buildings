@@ -7,10 +7,10 @@ Projekt na laboratorium Inżynierii Oprogramowania
  - W zakładce projects jest tablica dla pierwszego sprintu, nowe issues będą wskakiwać do 'to do' automatycznie. Jak zaczniecie implementować któreś z nich, przesuńcie pole do 'in progress', a po ukończeniu do 'Done'. Ułatwi nam to śledzenie, co się dzieje. Jakby co, issues po zakończeniu nie usuwamy, a jedynie zamykamy. ~pjt
  - Jeśli chcecie dostawać maile jak projekt przestanie się kompilować to dodajcie swojego maila do .travis.yml (Podobno działają tylko maile przypisane do konta na githubie). ~pjt
  - Wczytanie projektu do IntelliJ IDEA:
-  - Sklonuj repo
-  - W IDEA: File->New->Project From Existing Sources
-  - Wybierz folder (ten, w którym znajduje się pom.xml)
-  - Import project from external model -> Maven -> Nic nie zmieniamy, klikamy next->next->Wybieramy wersję sdk
+    - Sklonuj repo
+    - W IDEA: File->New->Project From Existing Sources
+    - Wybierz folder (ten, w którym znajduje się pom.xml)
+    - Import project from external model -> Maven -> Nic nie zmieniamy, klikamy next->next->Wybieramy wersję sdk
    
 # Building Info
 Dla administratorów budynków, którzy pragną optymalizować koszty zarządzania budynkami  nasza aplikacja Building Info umożliwi pozyskanie informacji o parametrach budynku na poziomie pomieszczeń, kondygnacji oraz całych budynków. Aplikacja będzie dostępna poprzez GUI a także jako zdalne API dzięki czemu można ją zintegrować z istniejącymi narzędziami.
