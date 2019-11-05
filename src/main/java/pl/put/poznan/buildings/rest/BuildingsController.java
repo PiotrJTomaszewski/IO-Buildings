@@ -1,17 +1,17 @@
-package pl.put.poznan.transformer.rest;
+package pl.put.poznan.buildings.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.buildings.logic.Buildings;
 
 import java.util.Arrays;
 
 
 @RestController
 @RequestMapping("/{text}")
-public class TextTransformerController {
+public class BuildingsController {
 
-    private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BuildingsController.class);
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@PathVariable String text,
@@ -22,7 +22,7 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(transforms));
 
         // do the transformation, you should run your logic here, below just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
+        Buildings transformer = new Buildings(transforms);
         return transformer.transform(text);
     }
 
@@ -35,7 +35,7 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(transforms));
 
         // do the transformation, you should run your logic here, below just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
+        Buildings transformer = new Buildings(transforms);
         return transformer.transform(text);
     }
 
