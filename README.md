@@ -1,5 +1,5 @@
 # IO-Builings
-![Build status](<https://travis-ci.org/PiotrJTomaszewski/IO-Builings.svg?branch=master>)
+[![Build Status](https://travis-ci.org/PiotrJTomaszewski/IO-Buildings.svg?branch=master)](https://travis-ci.org/PiotrJTomaszewski/IO-Buildings)
 
 Projekt na laboratorium Inżynierii Oprogramowania
 # INFO
