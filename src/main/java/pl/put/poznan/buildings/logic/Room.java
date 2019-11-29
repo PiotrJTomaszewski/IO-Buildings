@@ -16,4 +16,13 @@ public class Room extends Location {
     public float getEnergyUse() {
     	return this.heating*this.energy_const*this.cube;
     }
+    
+    public int getArea() {
+    	return this.area;
+    }
+    
+    public int getCube() {
+    	return this.cube;
+    }
+    
 }

@@ -25,6 +25,9 @@ public abstract class Location {
     }
     
     public abstract float getEnergyUse();
+    public abstract int getArea();
+    
+    public abstract int getCube();
 
     @Override
     public String toString() {
