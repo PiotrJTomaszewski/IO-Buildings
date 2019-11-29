@@ -25,6 +25,8 @@ public abstract class Location {
     }
     
     public abstract int getArea();
+    
+    public abstract int getCube();
 
     @Override
     public String toString() {

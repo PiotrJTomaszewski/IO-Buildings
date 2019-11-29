@@ -10,4 +10,8 @@ public class Room extends Location {
     	return this.area;
     }
     
+    public int getCube() {
+    	return this.cube;
+    }
+    
 }
