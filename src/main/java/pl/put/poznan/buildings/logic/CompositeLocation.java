@@ -13,11 +13,9 @@ public abstract class CompositeLocation extends Location {
 	 * @author sebastian_michon
 	 */
     public float getEnergyUse() {
-	    float summa=0;
-    	for (Location x:this.locations) {
-	    	summa+=x.getEnergyUse();
-	    }
+	    float summa=this.getHeating()/this.getCube();
 	    return summa;
+    }
     
     /**
      * Calculates the sum of all the children's area
@@ -29,6 +27,18 @@ public abstract class CompositeLocation extends Location {
     		areaSum += location.getArea();
     	}
     	return areaSum;
+    }
+    
+    /**
+     * Calculates the sum of all the children's heating
+     * @return The sum of the children's heating
+     */
+    public float getHeating() {
+    	int heatSum = 0;
+    	for (Location location: locations) {
+    		heatSum += location.getArea();
+    	}
+    	return heatSum;
     }
     
     /**

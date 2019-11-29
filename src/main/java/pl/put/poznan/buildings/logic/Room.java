@@ -5,7 +5,6 @@ public class Room extends Location {
     private int cube;
     private float heating;
     private int light;
-    private float energy_const;
     
     /**
      * Gives energy used by certain room
@@ -14,7 +13,7 @@ public class Room extends Location {
      * @author sebastian_michon
      */
     public float getEnergyUse() {
-    	return this.heating*this.energy_const*this.cube;
+    	return this.heating/this.cube;
     }
     
     /**
@@ -25,6 +24,9 @@ public class Room extends Location {
     	return this.area;
     }
     
+    public float getHeating() {
+    	return this.heating;
+    }
     /**
      * Calculates the volume of the room
      * @return The volume of the room
