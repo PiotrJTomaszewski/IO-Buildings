@@ -23,6 +23,8 @@ public abstract class Location {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public abstract int getArea();
 
     @Override
     public String toString() {
