@@ -52,6 +52,14 @@ public class Room extends Location {
     public int getCube() {
     	return this.cube;
     }
+
+    /**
+     * Calculates the light of the room
+     * @return The light of the room
+     */
+    public int getLight() {
+    	return this.light;
+    }
     
     /**
      * calculates, whether energy used by room is greater than threshold

@@ -56,6 +56,28 @@ public abstract class CompositeLocation extends Location {
     }
     
     /**
+     * Calculates the sum of all the children's light
+     * @return The sum of the children's light
+     */
+    public int getLight() {
+    	int lightSum = 0;
+    	for (Location location: locations) {
+    		lightSum += location.getLight();
+    	}
+    	return lightSum;
+    }
+    
+    /**
+     * Calculates the mean of all the children's light
+     * @return The sum of the children's light divided by the sum of the children's volume
+     */
+    public float getMeanLight() {
+    	float lightMean = 0;
+    	lightMean = this.getLight() / this.getArea();
+    	return lightMean;
+    }
+    
+    /**
      * gives all rooms using more energy than threshold
      * 
      * @return list of all buildings above threshold

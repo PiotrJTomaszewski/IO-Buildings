@@ -29,6 +29,7 @@ public abstract class Location {
     public abstract float getHeatingEnergyUse();
     public abstract float getHeating();
     public abstract int getArea();
+    public abstract int getLight();
     public abstract ArrayList<Location> thresholding_energy(float thr);
     public abstract int getCube();
 
