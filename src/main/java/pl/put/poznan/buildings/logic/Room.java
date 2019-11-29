@@ -5,4 +5,9 @@ public class Room extends Location {
     private int cube;
     private float heating;
     private int light;
+    
+    public int getArea() {
+    	return this.area;
+    }
+    
 }
