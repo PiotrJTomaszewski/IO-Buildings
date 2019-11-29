@@ -17,10 +17,18 @@ public class Room extends Location {
     	return this.heating*this.energy_const*this.cube;
     }
     
+    /**
+     * Calculates the area of the room
+     * @return The area of the room
+     */
     public int getArea() {
     	return this.area;
     }
     
+    /**
+     * Calculates the volume of the room
+     * @return The volume of the room
+     */
     public int getCube() {
     	return this.cube;
     }
