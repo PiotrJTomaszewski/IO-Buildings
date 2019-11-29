@@ -2,13 +2,20 @@ package pl.put.poznan.buildings.logic;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Room.class, name = "room"),
+    @JsonSubTypes.Type(value = Building.class, name = "building")
+})
 public abstract class Location {
     private long id;
     private String name;
-
-    public Location() {
-
-    }
 
     public long getId() {
         return id;

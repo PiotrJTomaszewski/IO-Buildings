@@ -24,12 +24,12 @@ public abstract class CompositeLocation extends Location {
      */
     public int getArea() {
     	int areaSum = 0;
-    	for (Location location: locations) {
+    	for (Location location: getLocations()) {
     		areaSum += location.getArea();
     	}
     	return areaSum;
     }
-    
+
     /**
      * Calculates the sum of all the children's heating
      * @return The sum of the children's heating
@@ -93,6 +93,13 @@ public abstract class CompositeLocation extends Location {
     		}
     	}
     	return thresholded_list;
-    };
+    }
     
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
+	}
 }
