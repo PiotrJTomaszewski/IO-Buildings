@@ -12,4 +12,12 @@ public abstract class CompositeLocation extends Location {
     	}
     	return areaSum;
     }
+    
+    public int getCube() {
+    	int cubeSum = 0;
+    	for (Location location: locations) {
+    		cubeSum += location.getCube();
+    	}
+    	return cubeSum;
+    }
 }
