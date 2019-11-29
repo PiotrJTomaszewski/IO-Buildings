@@ -1,5 +1,6 @@
 package pl.put.poznan.buildings.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class CompositeLocation extends Location {
@@ -12,7 +13,7 @@ public abstract class CompositeLocation extends Location {
 	 * @return energy used by composite location
 	 * @author sebastian_michon
 	 */
-    public float getEnergyUse() {
+    public float getHeatingEnergyUse() {
 	    float summa=this.getHeating()/this.getCube();
 	    return summa;
     }
@@ -41,6 +42,7 @@ public abstract class CompositeLocation extends Location {
     	return heatSum;
     }
     
+    
     /**
      * Calculates the sum of all the children's volume
      * @return The sum of the children's volume
@@ -52,4 +54,23 @@ public abstract class CompositeLocation extends Location {
     	}
     	return cubeSum;
     }
+    
+    /**
+     * gives all rooms using more energy than threshold
+     * 
+     * @return list of all buildings above threshold
+     * @author sebastian_michon
+     */
+    public ArrayList<Location> thresholding_energy(float thr){
+    	ArrayList<Location> thresholded_list=new ArrayList<>();
+    	
+    	for (Location x: locations) {
+    		ArrayList<Location> subbuild=x.thresholding_energy(thr);
+    		for (Location y: subbuild) {
+    			thresholded_list.add(y);
+    		}
+    	}
+    	return thresholded_list;
+    };
+    
 }

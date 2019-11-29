@@ -1,5 +1,7 @@
 package pl.put.poznan.buildings.logic;
 
+import java.util.ArrayList;
+
 public abstract class Location {
     private long id;
     private String name;
@@ -24,10 +26,10 @@ public abstract class Location {
         this.name = name;
     }
     
-    public abstract float getEnergyUse();
+    public abstract float getHeatingEnergyUse();
     public abstract float getHeating();
     public abstract int getArea();
-    
+    public abstract ArrayList<Location> thresholding_energy(float thr);
     public abstract int getCube();
 
     @Override
