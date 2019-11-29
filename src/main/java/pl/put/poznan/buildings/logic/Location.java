@@ -24,7 +24,6 @@ public abstract class Location {
         this.name = name;
     }
     
-    public abstract float getEnergyUse();
     public abstract int getArea();
     
     public abstract int getCube();
