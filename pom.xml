@@ -6,6 +6,7 @@
 
     <groupId>pl.put.poznan</groupId>
     <artifactId>buildings</artifactId>
+    <packaging>war</packaging>
     <version>0.1</version>
 
     <parent>
@@ -43,6 +44,16 @@
             </plugin>
         </plugins>
     </build>
+    
+    <reporting>
+    	<plugins>
+	    	<plugin>
+	    		<groupId>org.apache.maven.plugins</groupId>
+	    		<artifactId>maven-javadoc-plugin</artifactId>
+	    		<version>3.1.1</version>
+	    	</plugin>
+    	</plugins>
+    </reporting>
 
     <repositories>
         <repository>
