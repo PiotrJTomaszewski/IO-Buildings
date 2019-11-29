@@ -7,6 +7,16 @@ public class Room extends Location {
     private int light;
     
     /**
+     * Gives energy used by certain room
+     * 
+     * @return energy used by a room
+     * @author sebastian_michon
+     */
+    public float getEnergyUse() {
+    	return this.heating/this.cube;
+    }
+    
+    /**
      * Calculates the area of the room
      * @return The area of the room
      */
@@ -14,6 +24,9 @@ public class Room extends Location {
     	return this.area;
     }
     
+    public float getHeating() {
+    	return this.heating;
+    }
     /**
      * Calculates the volume of the room
      * @return The volume of the room

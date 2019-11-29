@@ -4,6 +4,18 @@ import java.util.List;
 
 public abstract class CompositeLocation extends Location {
     private List<Location> locations;
+    private float EnergyUse;
+    
+    /**
+	 * Gives energy used by given composite location
+	 * 
+	 * @return energy used by composite location
+	 * @author sebastian_michon
+	 */
+    public float getEnergyUse() {
+	    float summa=this.getHeating()/this.getCube();
+	    return summa;
+    }
     
     /**
      * Calculates the sum of all the children's area
@@ -15,6 +27,18 @@ public abstract class CompositeLocation extends Location {
     		areaSum += location.getArea();
     	}
     	return areaSum;
+    }
+    
+    /**
+     * Calculates the sum of all the children's heating
+     * @return The sum of the children's heating
+     */
+    public float getHeating() {
+    	int heatSum = 0;
+    	for (Location location: locations) {
+    		heatSum += location.getArea();
+    	}
+    	return heatSum;
     }
     
     /**
