@@ -36,7 +36,7 @@ public class Room extends Location {
     public int getArea() {
     	return this.area;
     }
-    
+
     /**
      * Calculates heating of the room
      * @return Heating value of the room
@@ -85,4 +85,19 @@ public class Room extends Location {
     	return isthresholded;
     }
     
+    public void setArea(int area) {
+        this.area = area;
+    }
+
+    public void setCube(int cube) {
+        this.cube = cube;
+    }
+
+    public void setHeating(float heating) {
+        this.heating = heating;
+    }
+
+    public void setLight(int light) {
+        this.light = light;
+    }
 }
