@@ -40,8 +40,11 @@ public abstract class Location {
     public abstract ArrayList<Location> thresholding_energy(float thr);
     public abstract int getCube();
 
+    public abstract void accept(LocationVisitor visitor);
+
     @Override
     public String toString() {
         return String.format("Building id:%d name:%s", id, name);
     }
+
 }

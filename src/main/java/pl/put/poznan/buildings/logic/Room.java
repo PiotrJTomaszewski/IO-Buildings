@@ -90,4 +90,8 @@ public class Room extends Location {
     public void setLight(int light) {
         this.light = light;
     }
+
+    public void accept(LocationVisitor visitor) {
+        visitor.visit(this);
+    }
 }

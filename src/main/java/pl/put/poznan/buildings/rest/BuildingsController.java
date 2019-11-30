@@ -2,9 +2,7 @@ package pl.put.poznan.buildings.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.buildings.logic.Building;
-import pl.put.poznan.buildings.logic.Location;
-import pl.put.poznan.buildings.logic.Room;
+import pl.put.poznan.buildings.logic.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,11 +15,11 @@ public class BuildingsController {
     private static final Logger logger = LoggerFactory.getLogger(BuildingsController.class);
 
     @PostMapping("/locations/{id}")
-    public Building postLocation(@PathVariable long id, @RequestBody Building building) {
+    public Location postLocation(@PathVariable long id, @RequestBody Building building) {
         // log the parameters
         logger.debug(Long.toString(id));
         logger.debug(building.toString());
-        return building;
+        return findById(building, id);
     }
 
     @PostMapping(path = "/locations/{id}/area")
@@ -29,7 +27,7 @@ public class BuildingsController {
         // log the parameters
         logger.debug(Long.toString(id));
         logger.debug(building.toString());
-        return toKeyValue("area", building.getArea());
+        return toKeyValue("area", findById(building, id).getArea());
     }
 
     @PostMapping(path = "/locations/{id}/cube")
@@ -37,7 +35,7 @@ public class BuildingsController {
         // log the parameters
         logger.debug(Long.toString(id));
         logger.debug(building.toString());
-        return toKeyValue("cube", building.getCube());
+        return toKeyValue("cube", findById(building, id).getCube());
     }
 
     @PostMapping(path = "/locations/{id}/light")
@@ -45,7 +43,7 @@ public class BuildingsController {
         // log the parameters
         logger.debug(Long.toString(id));
         logger.debug(building.toString());
-        return toKeyValue("light", building.getMeanLight());
+        return toKeyValue("light", (float) findById(building, id).getLight());
     }
 
     @PostMapping(path = "/locations/{id}/heating")
@@ -53,7 +51,7 @@ public class BuildingsController {
         // log the parameters
         logger.debug(Long.toString(id));
         logger.debug(building.toString());
-        return toKeyValue("heating", building.getHeatingEnergyUse());
+        return toKeyValue("heating", findById(building, id).getHeatingEnergyUse());
     }
 
     @PostMapping(path = "/locations/{id}/exceed")
@@ -62,7 +60,17 @@ public class BuildingsController {
         logger.debug(Long.toString(id));
         logger.debug(Float.toString(heatingEnergy));
         logger.debug(building.toString());
-        return building.thresholding_energy(heatingEnergy);
+        return findById(building, id).thresholding_energy(heatingEnergy);
+    }
+
+    private Location findById(Building building, long id) {
+        LocationFinder finder = new LocationFinder(id);
+        building.accept(finder);
+        Location result = finder.getResult();
+        if (result == null) {
+            throw new LocationNotFoundException(id);
+        }
+        return result;
     }
 
     private <T> Map<String, T> toKeyValue(String key, T value) {
