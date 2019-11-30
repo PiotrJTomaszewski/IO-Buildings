@@ -1,8 +1,6 @@
 package pl.put.poznan.buildings.logic;
 import java.util.ArrayList;
 
-import com.sun.tools.javac.util.List;
-
 public class Room extends Location {
     private int area;
     private int cube;
@@ -66,10 +64,8 @@ public class Room extends Location {
      * @return The the light in the room divided by the volume of the room
      */
     public float getMeanLight() {
-    	float lightMean = 0;
-    	lightMean = this.getLight() / this.getArea();
-    	return lightMean;
-    }	
+        return (float) this.getLight() / this.getArea();
+    }
     
     /**
      * calculates, whether energy used by room is greater than threshold

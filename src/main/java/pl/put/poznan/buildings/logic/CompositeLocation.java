@@ -37,7 +37,7 @@ public abstract class CompositeLocation extends Location {
     public float getHeating() {
     	int heatSum = 0;
     	for (Location location: locations) {
-    		heatSum += location.getArea();
+    		heatSum += location.getHeating();
     	}
     	return heatSum;
     }
@@ -72,9 +72,7 @@ public abstract class CompositeLocation extends Location {
      * @return The sum of the children's light divided by the sum of the children's volume
      */
     public float getMeanLight() {
-    	float lightMean = 0;
-    	lightMean = this.getLight() / this.getArea();
-    	return lightMean;
+    	return (float) this.getLight() / this.getArea();
     }
     
     /**

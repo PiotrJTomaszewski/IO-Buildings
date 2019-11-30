@@ -76,7 +76,7 @@ public class BuildingsController {
         // log the parameters
         logger.debug(Long.toString(id));
         logger.debug(building.toString());
-        return toKeyValue("light", (float) findById(building, id).getLight());
+        return toKeyValue("light", (float) findById(building, id).getMeanLight());
     }
 
     /**
