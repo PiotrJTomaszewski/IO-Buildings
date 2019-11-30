@@ -31,6 +31,15 @@ public class LocationFinder implements LocationVisitor {
         visit((CompositeLocation) building);
     }
 
+    /**
+     * Finds location with given id either in floor or its children.
+     * @param floor Floor to process
+     */
+    @Override
+    public void visit(Floor floor) {
+        visit((CompositeLocation) floor);
+    }
+
     private void visit(CompositeLocation location) {
         if (location.getId() == locationId) {
             result = location;
