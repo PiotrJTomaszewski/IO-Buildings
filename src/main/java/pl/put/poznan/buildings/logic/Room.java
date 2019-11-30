@@ -60,6 +60,16 @@ public class Room extends Location {
     public int getLight() {
     	return this.light;
     }
+
+    /**
+     * Calculates the mean of light in the room
+     * @return The the light in the room divided by the volume of the room
+     */
+    public float getMeanLight() {
+    	float lightMean = 0;
+    	lightMean = this.getLight() / this.getArea();
+    	return lightMean;
+    }	
     
     /**
      * calculates, whether energy used by room is greater than threshold
