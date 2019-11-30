@@ -24,7 +24,7 @@ public abstract class CompositeLocation extends Location {
      */
     public int getArea() {
     	int areaSum = 0;
-    	for (Location location: getLocations()) {
+    	for (Location location: locations) {
     		areaSum += location.getArea();
     	}
     	return areaSum;

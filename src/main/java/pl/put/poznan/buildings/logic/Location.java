@@ -11,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     property = "type")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Room.class, name = "room"),
-    @JsonSubTypes.Type(value = Building.class, name = "building")
+    @JsonSubTypes.Type(value = Building.class, name = "building"),
+    @JsonSubTypes.Type(value = Floor.class, name = "floor")
 })
 public abstract class Location {
     private long id;
@@ -41,8 +42,11 @@ public abstract class Location {
     public abstract ArrayList<Location> thresholding_energy(float thr);
     public abstract int getCube();
 
+    public abstract void accept(LocationVisitor visitor);
+
     @Override
     public String toString() {
         return String.format("Building id:%d name:%s", id, name);
     }
+
 }
