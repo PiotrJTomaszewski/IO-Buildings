@@ -4,7 +4,14 @@ package pl.put.poznan.buildings.logic;
  * Class that finds location with given id.
  */
 public class LocationFinder implements LocationVisitor {
+	/**
+	 * Identification number of the location.
+	 */
     private long locationId;
+    
+    /**
+     * The result of location search.
+     */
     private Location result;
 
     public LocationFinder(long locationId) {
@@ -39,7 +46,11 @@ public class LocationFinder implements LocationVisitor {
     public void visit(Floor floor) {
         visit((CompositeLocation) floor);
     }
-
+    
+    /**
+     * Finds location with given id in location or its children.
+     * @param location Location to process
+     */
     private void visit(CompositeLocation location) {
         if (location.getId() == locationId) {
             result = location;

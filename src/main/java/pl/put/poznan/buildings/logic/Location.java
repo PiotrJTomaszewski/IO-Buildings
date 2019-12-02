@@ -14,8 +14,18 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     @JsonSubTypes.Type(value = Building.class, name = "building"),
     @JsonSubTypes.Type(value = Floor.class, name = "floor")
 })
+/**
+ * Represents a location.
+ *
+ */
 public abstract class Location {
+	/**
+	 * Identification number of the location.
+	 */
     private long id;
+    /**
+     * The name of the location.
+     */
     private String name;
 
     public long getId() {
@@ -41,7 +51,11 @@ public abstract class Location {
     public abstract float getMeanLight();
     public abstract ArrayList<Location> thresholding_energy(float thr);
     public abstract int getCube();
-
+    
+    /**
+     * Accepts a visitor and dispatches operation to it.
+     * @param visitor A visitor to accept
+     */
     public abstract void accept(LocationVisitor visitor);
 
     @Override

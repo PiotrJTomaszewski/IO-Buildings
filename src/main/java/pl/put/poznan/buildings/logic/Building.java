@@ -1,5 +1,9 @@
 package pl.put.poznan.buildings.logic;
 
+/**
+ * Represents a building
+ *
+ */
 public class Building extends CompositeLocation {
 
     /**
