@@ -3,9 +3,16 @@ package pl.put.poznan.buildings.logic;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The composite of locations
+ *
+ */
 public abstract class CompositeLocation extends Location {
+	/**
+	 * List of sub locations
+	 */
     private List<Location> locations;
-    private float EnergyUse;
+//    private float EnergyUse;
     
     /**
 	 * Gives energy used by given composite location
@@ -44,8 +51,8 @@ public abstract class CompositeLocation extends Location {
     
     
     /**
-     * Calculates the sum of all the children's volume
-     * @return The sum of the children's volume
+     * Calculates the sum of all the children's volume.
+     * @return The sum of the children's volume.
      */
     public int getCube() {
     	int cubeSum = 0;
@@ -56,7 +63,7 @@ public abstract class CompositeLocation extends Location {
     }
     
     /**
-     * Calculates the sum of all the children's light
+     * Calculates the sum of all the children's light.
      * @return The sum of the children's light
      */
     public int getLight() {
@@ -68,7 +75,7 @@ public abstract class CompositeLocation extends Location {
     }
     
     /**
-     * Calculates the mean of all the children's light
+     * Calculates the mean of all the children's light.
      * @return The sum of the children's light divided by the sum of the children's volume
      */
     public float getMeanLight() {
@@ -76,7 +83,7 @@ public abstract class CompositeLocation extends Location {
     }
     
     /**
-     * gives all rooms using more energy than threshold
+     * Gives all rooms using more energy than threshold.
      * 
      * @return list of all buildings above threshold
      * @author sebastian_michon

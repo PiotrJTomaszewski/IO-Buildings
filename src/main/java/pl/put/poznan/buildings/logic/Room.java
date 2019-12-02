@@ -1,10 +1,29 @@
 package pl.put.poznan.buildings.logic;
 import java.util.ArrayList;
 
+/**
+ * Represents a room.
+ *
+ */
 public class Room extends Location {
+	/**
+	 * The area of the room in m^2.
+	 */
     private int area;
+    
+    /**
+     * The volume (cubage) of the room in m^3.
+     */
     private int cube;
+    
+    /**
+     * The heating energy level of the room.
+     */
     private float heating;
+    
+    /**
+     * The light power of the room.
+     */
     private int light;
     
     /**
@@ -17,8 +36,8 @@ public class Room extends Location {
     	return this.heating/this.cube;
     }
     
-    /** Gives whole energy used by a certain room
-     * 
+    /** 
+     * Gives whole energy used by a certain room
      * @return whole energy used by a room
      * @author sebastian_michon
      */
@@ -68,9 +87,9 @@ public class Room extends Location {
     }
     
     /**
-     * calculates, whether energy used by room is greater than threshold
+     * Calculates, whether energy used by room is greater than threshold.
      * 
-     * @param thr - threshold, if building uses more energy than threshold
+     * @param thr - threshold, energy usage threshold
      * @return Location if room uses more energy than threshold or null otherwise
      */
     public ArrayList<Location> thresholding_energy(float thr) {
