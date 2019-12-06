@@ -3,6 +3,16 @@
 
 Projekt na laboratorium Inżynierii Oprogramowania
 
+# Retrospektywa
+ - Co powinniśmy zacząć robić?
+   - Powinniśmy zacząć pracę odrobinę wcześniej
+   - Powinniśmy szukać lepszego miejsca do pracy (hałas, problem z oświetleniem)
+ - Co powinniśmy przestać robić?
+   - Powinniśmy przestać zwlekać z rozpoczęciem pracy
+ - Co powinniśmy kontynuować robić?
+   - Powinniśmy kontynuować spotkania w celu wspólnej pracy
+
+
 # Info
 Maven:
  - Kompilacja: mvn clean compile
