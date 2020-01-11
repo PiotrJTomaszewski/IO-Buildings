@@ -42,7 +42,7 @@ public class Room extends Location {
      * @author sebastian_michon
      */
     public float getEnergyUse() {
-    	return this.getHeatingEnergyUse();
+    	return this.getHeatingEnergyUse()+this.getMeanLight();
     }
     
     

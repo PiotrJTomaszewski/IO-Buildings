@@ -42,7 +42,7 @@ public abstract class CompositeLocation extends Location {
      * @return The sum of the children's heating
      */
     public float getHeating() {
-    	int heatSum = 0;
+    	float heatSum = 0;
     	for (Location location: locations) {
     		heatSum += location.getHeating();
     	}
