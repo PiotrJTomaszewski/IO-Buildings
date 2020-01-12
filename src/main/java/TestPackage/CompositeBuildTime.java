@@ -15,7 +15,7 @@ import pl.put.poznan.buildings.logic.Room;
 class CompositeBuildTime {
 	private Building x;
 	private Room a;
-	private int thr=35;
+	private int thr=40;
 	long start;
 	
 	@BeforeEach

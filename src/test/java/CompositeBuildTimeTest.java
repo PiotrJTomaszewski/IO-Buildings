@@ -10,10 +10,10 @@ import pl.put.poznan.buildings.logic.Building;
 import pl.put.poznan.buildings.logic.Location;
 import pl.put.poznan.buildings.logic.Room;
 
-class CompositeBuildTime {
+class CompositeBuildTimeTest {
 	private Building x;
 	private Room a;
-	private int thr=35;
+	private int thr=60;
 	long start;
 	
 	@BeforeEach
@@ -86,7 +86,7 @@ class CompositeBuildTime {
 	void TimeThresholdEmptyTest() {
 		x.thresholding_energy(3);
 		long end= System.currentTimeMillis()-start;
-		assertEquals(Math.max(end-5*thr, 0), 0);
+		assertEquals(Math.max(end-10*thr, 0), 0);
 	}
 	
 

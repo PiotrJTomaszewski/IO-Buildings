@@ -11,14 +11,14 @@ import pl.put.poznan.buildings.logic.Floor;
 import pl.put.poznan.buildings.logic.Location;
 import pl.put.poznan.buildings.logic.Room;
 
-class CompositeNonAbstractClasses {
+class CompositeNonAbstractClassTest {
 
 	private Building x;
 	private Room a, b, c, d;
 	private Floor e;
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 		x=new Building();
 		
 		a=new Room();
@@ -61,7 +61,7 @@ class CompositeNonAbstractClasses {
 	}
 
 	@Test
-	void GetIdTest() {
+	public void GetIdTest() {
 		e.setId(12);
 		x.setId(13);
 		assertEquals(12, e.getId());

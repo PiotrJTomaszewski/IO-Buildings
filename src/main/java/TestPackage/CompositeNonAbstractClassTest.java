@@ -20,7 +20,7 @@ class CompositeNonAbstractClassTest {
 	private Floor e;
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 		x=new Building();
 		
 		a=new Room();
@@ -63,7 +63,7 @@ class CompositeNonAbstractClassTest {
 	}
 
 	@Test
-	void GetIdTest() {
+	public void GetIdTest() {
 		e.setId(12);
 		x.setId(13);
 		assertEquals(12, e.getId());
