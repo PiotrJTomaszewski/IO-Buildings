@@ -1,9 +1,4 @@
-package TestPackage;
-
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,16 +6,22 @@ import org.junit.jupiter.api.Test;
 import pl.put.poznan.buildings.logic.Building;
 import pl.put.poznan.buildings.logic.Floor;
 import pl.put.poznan.buildings.logic.Location;
+import pl.put.poznan.buildings.logic.LocationVisitor;
 import pl.put.poznan.buildings.logic.Room;
+import pl.put.poznan.buildings.rest.BuildingsController;
 
-class CompositeNonAbstractClassTest {
 
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
+class MockTests {
+	
 	private Building x;
 	private Room a, b, c, d;
-	private Floor e;
-	
+
 	@BeforeEach
-	public void setUp() throws Exception {
+	void setUp() throws Exception {
 		x=new Building();
 		
 		a=new Room();
@@ -48,7 +49,7 @@ class CompositeNonAbstractClassTest {
 		c.setLight(1);
 		d.setLight(400);
 		
-		e=new Floor();
+		Floor e=new Floor();
 		List<Location> z=new ArrayList<Location>();
 		z.add(a);
 		z.add(b);
@@ -60,35 +61,19 @@ class CompositeNonAbstractClassTest {
 		y.add(d);
 		
 		x.setLocations(y);
-	}
-
-	@Test
-	public void GetIdTest() {
-		e.setId(12);
-		x.setId(13);
-		assertEquals(12, e.getId());
-		assertEquals(13, x.getId());
-	}
-	
-	@Test
-	void GetNameTest() {
-		e.setName("Jonasz");
-		x.setName("Elizeusz");
-		assertEquals("Jonasz", e.getName());
-		assertEquals("Elizeusz", x.getName());
-	}
-	
-	@Test
-	void GetStringTest() {
-		e.setName("Jonasz");
-		x.setName("Elizeusz");
-		e.setId(12);
-		x.setId(13);
 		
-		assertEquals("Building id:12 name:Jonasz", e.toString());
-		assertEquals("Building id:13 name:Elizeusz", x.toString());
 	}
 	
-	
-
+	@Test
+	void BuildingTest() {
+		Building k=mock(Building.class);
+		when(k.getId()).thenReturn((long) 13);
+		List<Location> c=new ArrayList<Location>();
+		c.add(k);
+		when(k.getLocations()).thenReturn(c);
+		doCallRealMethod().when(k).accept(any());
+		
+		BuildingsController bc=new BuildingsController();
+		bc.postLocation(13, k);
+	}
 }
