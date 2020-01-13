@@ -26,30 +26,37 @@ class MockTests {
         return map;
     }
 	
-	@Test
-	void PostLocationNoErrorTest() {
-		Building k=mock(Building.class);
-		when(k.getId()).thenReturn((long) 13);
+	private Building k;
+	private BuildingsController bc;
+	
+	@BeforeEach
+	public void setUp() throws Exception {
+		k=mock(Building.class);
 		List<Location> c=new ArrayList<Location>();
 		c.add(k);
 		when(k.getLocations()).thenReturn(c);
 		doCallRealMethod().when(k).accept(any());
-		BuildingsController bc=new BuildingsController();
+		bc=new BuildingsController();
+	}
+	
+	/**
+	 * Correct add of a building
+	 */
+	@Test
+	void PostLocationNoErrorTest() {
+		when(k.getId()).thenReturn((long) 13);
 		bc.postLocation(13, k);
 		assertDoesNotThrow(()->{
 			bc.postLocation(13, k);
 		});
 	}
 	
+	/**
+	 * Id of a building and id as passed argument differs
+	 */
 	@Test
 	void PostLocationErrorTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 17);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
-		BuildingsController bc=new BuildingsController();
 		assertThrows(StackOverflowError.class, ()->{
 			bc.postLocation(14, k);
 		});
@@ -57,15 +64,8 @@ class MockTests {
 	
 	@Test
 	void PostLocationHeatingTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 13);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
-		//doCallRealMethod().when(k).getHeatingEnergyUse();
 		
-		BuildingsController bc=new BuildingsController();
 		assertDoesNotThrow(()->{
 			Map<String, Float> m=bc.postLocationHeating(13, k);
 			assertEquals(m, toKeyValue("heating", 0.0f));
@@ -74,15 +74,9 @@ class MockTests {
 	
 	@Test
 	void PostLocationHeatingErrorTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 13);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
 		doCallRealMethod().when(k).getHeatingEnergyUse();
 		
-		BuildingsController bc=new BuildingsController();
 		assertThrows(AssertionFailedError.class, ()->{
 			Map<String, Float> m=bc.postLocationHeating(13, k);
 			assertEquals(m, toKeyValue("heating", 0.0f));
@@ -91,15 +85,8 @@ class MockTests {
 	
 	@Test
 	void PostLocationLightTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 13);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
-		//doCallRealMethod().when(k).getHeatingEnergyUse();
 		
-		BuildingsController bc=new BuildingsController();
 		assertDoesNotThrow(()->{
 			Map<String, Float> m=bc.postLocationLight(13, k);
 			assertEquals(m, toKeyValue("light", 0.0f));
@@ -108,15 +95,9 @@ class MockTests {
 	
 	@Test
 	void PostLocationLightErrorTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 13);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
 		doCallRealMethod().when(k).getMeanLight();
 		
-		BuildingsController bc=new BuildingsController();
 		assertThrows(AssertionFailedError.class, ()->{
 			Map<String, Float> m=bc.postLocationLight(13, k);
 			assertEquals(m, toKeyValue("light", 0.0f));
@@ -125,15 +106,7 @@ class MockTests {
 	
 	@Test
 	void PostLocationAreaTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 13);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
-		//doCallRealMethod().when(k).getHeatingEnergyUse();
-		
-		BuildingsController bc=new BuildingsController();
 		assertDoesNotThrow(()->{
 			Map<String, Integer> m=bc.postLocationArea(13, k);
 			assertEquals(m, toKeyValue("area", 0));
@@ -142,15 +115,9 @@ class MockTests {
 	
 	@Test
 	void PostLocationAreaErrorTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 13);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
 		doCallRealMethod().when(k).getArea();
 		
-		BuildingsController bc=new BuildingsController();
 		assertThrows(NullPointerException.class, ()->{
 			Map<String, Integer> m=bc.postLocationArea(13, k);
 			assertEquals(m, toKeyValue("area", 0));
@@ -159,15 +126,7 @@ class MockTests {
 	
 	@Test
 	void PostLocationCubeTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 13);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
-		//doCallRealMethod().when(k).getHeatingEnergyUse();
-		
-		BuildingsController bc=new BuildingsController();
 		assertDoesNotThrow(()->{
 			Map<String, Integer> m=bc.postLocationCube(13, k);
 			assertEquals(m, toKeyValue("cube", 0));
@@ -176,15 +135,9 @@ class MockTests {
 	
 	@Test
 	void PostLocationCubeErrorTest() {
-		Building k=mock(Building.class);
 		when(k.getId()).thenReturn((long) 13);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
-		doCallRealMethod().when(k).accept(any());
 		doCallRealMethod().when(k).getCube();
 		
-		BuildingsController bc=new BuildingsController();
 		assertThrows(NullPointerException.class, ()->{
 			Map<String, Integer> m=bc.postLocationCube(13, k);
 			assertEquals(m, toKeyValue("cube", 0));
