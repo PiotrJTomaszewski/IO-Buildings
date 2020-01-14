@@ -76,10 +76,22 @@ public abstract class CompositeLocation extends Location {
     
     /**
      * Calculates the mean of all the children's light.
-     * @return The sum of the children's light divided by the sum of the children's volume
+     * @return The sum of the children's light divided by the sum of the children's area
      */
     public float getMeanLight() {
     	return (float) this.getLight() / this.getArea();
+    }
+    
+    /**
+     * Calculates the sum of all energy used by children
+     * @return Sum of all energy used by children
+     */
+    public float getEnergyUse() {
+    	float energy = 0;
+    	for (Location location: locations) {
+    		energy += location.getEnergyUse();
+    	}
+    	return energy;
     }
     
     /**

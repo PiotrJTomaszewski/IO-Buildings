@@ -120,6 +120,7 @@ class TestComposite {
 		assertEquals(2.04001, b.getEnergyUse(), 0.00001);
 		assertEquals(0.0000833, c.getEnergyUse(), 0.00001);
 		assertEquals(83.333333, d.getEnergyUse(), 0.00001);
+		assertEquals(87.37844, x.getEnergyUse(), 0.0001);
 	}
 	
 	

@@ -49,6 +49,7 @@ public abstract class Location {
     public abstract int getArea();
     public abstract int getLight();
     public abstract float getMeanLight();
+    public abstract float getEnergyUse();
     public abstract ArrayList<Location> thresholding_energy(float thr);
     public abstract int getCube();
     

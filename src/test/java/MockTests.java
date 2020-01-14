@@ -32,9 +32,6 @@ class MockTests {
 	@BeforeEach
 	public void setUp() throws Exception {
 		k=mock(Building.class);
-		List<Location> c=new ArrayList<Location>();
-		c.add(k);
-		when(k.getLocations()).thenReturn(c);
 		doCallRealMethod().when(k).accept(any());
 		bc=new BuildingsController();
 	}
@@ -43,24 +40,52 @@ class MockTests {
 	 * Correct add of a building
 	 */
 	@Test
-	void PostLocationNoErrorTest() {
+	void PostLocationNoError1Test() {
 		when(k.getId()).thenReturn((long) 13);
 		assertDoesNotThrow(()->{
 			bc.postLocation(13, k);
 		});
 	}
 	
-	
 	/**
-	 * Id of a building and id as passed argument differs
+	 * Building contains correct Id in it's children
 	 */
 	@Test
-	void PostLocationErrorTest() {
-		when(k.getId()).thenReturn((long) 17);
-		assertThrows(StackOverflowError.class, ()->{
+	void PostLocationNoError2Test() {
+		List<Location> c=new ArrayList<Location>();
+		c.add(k);
+		Room x1=mock(Room.class), x2=mock(Room.class);
+		when(x1.getId()).thenReturn((long) 12);
+		when(x2.getId()).thenReturn((long) 13);
+		List<Location> z=new ArrayList<Location>();
+		
+		doCallRealMethod().when(x1).accept(any());
+		doCallRealMethod().when(x2).accept(any());
+		
+		z.add(x1);
+		z.add(x2);
+		when(k.getLocations()).thenReturn(z);
+		when(k.getId()).thenReturn((long) 14);
+		
+		assertDoesNotThrow(()->{
+			bc.postLocation(12, k);
+			bc.postLocation(13, k);
 			bc.postLocation(14, k);
 		});
 	}
+	
+	/**
+	 * Building does not contain correct id
+	 */
+	@Test
+	void PostLocationErrorTest() {
+		when(k.getId()).thenReturn((long) 102);
+		
+		assertThrows(LocationNotFoundException.class, ()->{
+			bc.postLocation(14, k);
+		});
+	}
+	
 	
 	/**
 	 * Heating returns default - whatever mock says it should return

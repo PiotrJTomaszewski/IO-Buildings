@@ -52,7 +52,7 @@ public class LocationFinder implements LocationVisitor {
      * @param location Location to process
      */
     private void visit(CompositeLocation location) {
-        if (location.getId() == locationId) {
+    	if (location.getId() == locationId) {
             result = location;
         }
         else {

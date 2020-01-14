@@ -118,8 +118,8 @@ public class BuildingsController {
      * @return Location with given id
      */
     private Location findById(Building building, long id) {
-        LocationFinder finder = new LocationFinder(id);
-        building.accept(finder);
+        LocationFinder finder = new LocationFinder(id);        
+        building.accept(finder);        
         Location result = finder.getResult();
         if (result == null) {
             throw new LocationNotFoundException(id);
