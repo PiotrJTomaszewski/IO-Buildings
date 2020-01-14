@@ -26,7 +26,7 @@ class MockTests {
         return map;
     }
 	
-	private Building k;
+	private Building k, l;
 	private BuildingsController bc;
 	
 	@BeforeEach
@@ -45,11 +45,11 @@ class MockTests {
 	@Test
 	void PostLocationNoErrorTest() {
 		when(k.getId()).thenReturn((long) 13);
-		bc.postLocation(13, k);
 		assertDoesNotThrow(()->{
 			bc.postLocation(13, k);
 		});
 	}
+	
 	
 	/**
 	 * Id of a building and id as passed argument differs
@@ -62,57 +62,79 @@ class MockTests {
 		});
 	}
 	
+	/**
+	 * Heating returns default - whatever mock says it should return
+	 */
 	@Test
 	void PostLocationHeatingTest() {
 		when(k.getId()).thenReturn((long) 13);
+		when(k.getHeatingEnergyUse()).thenReturn(10.23f);
+		Map<String, Float> m=bc.postLocationHeating(13, k);
 		
 		assertDoesNotThrow(()->{
-			Map<String, Float> m=bc.postLocationHeating(13, k);
-			assertEquals(m, toKeyValue("heating", 0.0f));
+			assertEquals(m, toKeyValue("heating", 10.23f));
 		});
 	}
 	
+	/**
+	 * Heating goes deeper to the not-initialized value - NaN
+	 */
 	@Test
 	void PostLocationHeatingErrorTest() {
 		when(k.getId()).thenReturn((long) 13);
 		doCallRealMethod().when(k).getHeatingEnergyUse();
+		Map<String, Float> m=bc.postLocationHeating(13, k);
 		
-		assertThrows(AssertionFailedError.class, ()->{
-			Map<String, Float> m=bc.postLocationHeating(13, k);
-			assertEquals(m, toKeyValue("heating", 0.0f));
+		assertDoesNotThrow(()->{
+			assertEquals(m, toKeyValue("heating", Float.NaN));
 		});
 	}
 	
+	/**
+	 * Light returns default - whatever mock says it should return
+	 */
 	@Test
 	void PostLocationLightTest() {
 		when(k.getId()).thenReturn((long) 13);
+		when(k.getMeanLight()).thenReturn(72.82f);
+		Map<String, Float> m=bc.postLocationLight(13, k);
 		
 		assertDoesNotThrow(()->{
-			Map<String, Float> m=bc.postLocationLight(13, k);
-			assertEquals(m, toKeyValue("light", 0.0f));
+			assertEquals(m, toKeyValue("light", 72.82f));
 		});
 	}
 	
+	/**
+	 * Light goes deeper to the not-initialized value - NaN
+	 */
 	@Test
 	void PostLocationLightErrorTest() {
 		when(k.getId()).thenReturn((long) 13);
 		doCallRealMethod().when(k).getMeanLight();
+		Map<String, Float> m=bc.postLocationLight(13, k);
 		
-		assertThrows(AssertionFailedError.class, ()->{
-			Map<String, Float> m=bc.postLocationLight(13, k);
-			assertEquals(m, toKeyValue("light", 0.0f));
+		assertDoesNotThrow(()->{
+			assertEquals(m, toKeyValue("light", Float.NaN));
 		});
 	}
 	
+	/**
+	 * Area returns default - whatever mock says it should return
+	 */
 	@Test
 	void PostLocationAreaTest() {
 		when(k.getId()).thenReturn((long) 13);
+		when(k.getArea()).thenReturn(733);
+		Map<String, Integer> m=bc.postLocationArea(13, k);
+		
 		assertDoesNotThrow(()->{
-			Map<String, Integer> m=bc.postLocationArea(13, k);
-			assertEquals(m, toKeyValue("area", 0));
+			assertEquals(m, toKeyValue("area", 733));
 		});
 	}
 	
+	/**
+	 * Area goes deeper to the not-initialized value - NullPointerException (This is Integer)
+	 */
 	@Test
 	void PostLocationAreaErrorTest() {
 		when(k.getId()).thenReturn((long) 13);
@@ -120,19 +142,26 @@ class MockTests {
 		
 		assertThrows(NullPointerException.class, ()->{
 			Map<String, Integer> m=bc.postLocationArea(13, k);
-			assertEquals(m, toKeyValue("area", 0));
 		});
 	}
 	
+	/**
+	 * Cube returns default - whatever mock says it should return
+	 */
 	@Test
 	void PostLocationCubeTest() {
 		when(k.getId()).thenReturn((long) 13);
+		when(k.getCube()).thenReturn(1);
+		Map<String, Integer> m=bc.postLocationCube(13, k);
+		
 		assertDoesNotThrow(()->{
-			Map<String, Integer> m=bc.postLocationCube(13, k);
-			assertEquals(m, toKeyValue("cube", 0));
+			assertEquals(m, toKeyValue("cube", 1));
 		});
 	}
 	
+	/**
+	 * Cube goes deeper to the not-initialized value - NullPointerException (This is Integer)
+	 */
 	@Test
 	void PostLocationCubeErrorTest() {
 		when(k.getId()).thenReturn((long) 13);
@@ -140,7 +169,6 @@ class MockTests {
 		
 		assertThrows(NullPointerException.class, ()->{
 			Map<String, Integer> m=bc.postLocationCube(13, k);
-			assertEquals(m, toKeyValue("cube", 0));
 		});
 	}
 	

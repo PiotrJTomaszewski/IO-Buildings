@@ -16,7 +16,7 @@ Projekt na laboratorium Inżynierii Oprogramowania
 # Info
 Maven:
  - Kompilacja: mvn clean compile
- - Testy (chwilowo bez mocków): mvn clean test
+ - Testy: mvn clean test
  - Dokumentacja: mvn clean site
    (wynik w target/site/index.html)
  - Stworzenie paczki .war: mvn clean package

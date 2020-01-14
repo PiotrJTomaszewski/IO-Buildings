@@ -13,7 +13,7 @@ import pl.put.poznan.buildings.logic.Room;
 class CompositeBuildTimeTest {
 	private Building x;
 	private Room a;
-	private int thr=60;
+	private int thr=95;
 	long start;
 	
 	@BeforeEach
